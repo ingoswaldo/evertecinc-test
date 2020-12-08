@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasRoleAndPermission;
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +20,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'state_id',
+        'city',
+        'address',
+        'postal_code'
     ];
 
     /**

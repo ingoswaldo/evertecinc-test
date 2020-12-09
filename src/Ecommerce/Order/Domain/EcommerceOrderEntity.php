@@ -84,11 +84,11 @@ final class EcommerceOrderEntity extends Entity
     public function toArray(): array
     {
         return [
-            'customer_name'        => $this->getCustomerName(),
-            'customer_email'       => $this->getCustomerEmail(),
-            'customer_mobile'    => $this->getCustomerMobile(),
-            'status'       => $this->getStatus(),
-            'total'    => $this->getTotal(),
+            'customer_name'   => $this->getCustomerName(),
+            'customer_email'  => $this->getCustomerEmail(),
+            'customer_mobile' => $this->getCustomerMobile(),
+            'status'          => $this->getStatus(),
+            'total'           => $this->getTotal(),
             'currency'        => $this->getCurrency()
         ];
     }

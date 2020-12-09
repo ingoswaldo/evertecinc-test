@@ -9,18 +9,18 @@ final class EcommerceOrdersResponse
     /**
      * @var EcommerceOrderResponse[]
      */
-    private $customers;
+    private $orders;
 
     public function __construct(EcommerceOrderResponse ...$customers)
     {
-        $this->customers = $customers;
+        $this->orders = $customers;
     }
 
     /**
      * @return EcommerceOrdersResponse[]
      */
-    public function getCustomers(): array
+    public function getOrders(): array
     {
-        return $this->customers;
+        return $this->orders;
     }
 }

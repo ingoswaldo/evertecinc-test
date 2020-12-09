@@ -1,6 +1,8 @@
 <?php
 declare(strict_types = 1);
 
+namespace Src\Ecommerce\Customer\Application;
+
 use Src\Shared\Application\Response;
 
 final class EcommerceCustomerResponse extends Response

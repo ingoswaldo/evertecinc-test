@@ -1,6 +1,10 @@
 <?php
 declare(strict_types=1);
 
+namespace Src\Ecommerce\Customer\Application\UseCases;
+
+use Src\Ecommerce\Customer\Application\EcommerceCustomerDeletedResponse;
+use Src\Ecommerce\Customer\Domain\EcommerceCustomerId;
 use Src\Shared\Application\BaseUseCase;
 use Src\Shared\Domain\Contracts\Repository;
 

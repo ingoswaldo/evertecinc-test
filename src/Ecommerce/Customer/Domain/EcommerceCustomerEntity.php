@@ -1,6 +1,9 @@
 <?php
 declare(strict_types = 1);
 
+namespace Src\Ecommerce\Customer\Domain;
+
+use Src\Ecommerce\State\Domain\EcommerceStateId;
 use Src\Shared\Domain\Entity;
 
 final class EcommerceCustomerEntity extends Entity
@@ -100,7 +103,6 @@ final class EcommerceCustomerEntity extends Entity
     public function toArray(): array
     {
         return [
-            'id'          => $this->getId(),
             'name'        => $this->getName(),
             'email'       => $this->getEmail(),
             'password'    => $this->getPassword(),

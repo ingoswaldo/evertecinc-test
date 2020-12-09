@@ -33,4 +33,12 @@ abstract class EntityId
 
         $this->id = $id;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return (string) $this->getValue();
+    }
 }

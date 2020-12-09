@@ -1,6 +1,11 @@
 <?php
 declare(strict_types=1);
 
+namespace Src\Ecommerce\Customer\Application\UseCases;
+
+use Src\Ecommerce\Customer\Application\EcommerceCustomerResponse;
+use Src\Ecommerce\Customer\Domain\EcommerceCustomerId;
+use Src\Ecommerce\Customer\Domain\Exceptions\EcommerceCustomerNotExists;
 use Src\Shared\Application\BaseUseCase;
 use Src\Shared\Application\Response;
 use Src\Shared\Domain\Contracts\Repository;

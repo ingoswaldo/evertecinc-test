@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+namespace Src\Ecommerce\Customer\Application;
+
 final class EcommerceCustomersResponse
 {
 

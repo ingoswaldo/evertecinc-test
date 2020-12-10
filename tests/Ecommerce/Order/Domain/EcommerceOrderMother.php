@@ -21,7 +21,8 @@ final class EcommerceOrderMother
             'customer_mobile' => MotherCreator::random()->phoneNumber,
             'status'          => MotherCreator::random()->randomElement(['CREATED', 'PAYED', 'REJECTED']),
             'total'           => MotherCreator::random()->randomFloat(2, 0, 1000),
-            'currency'        => MotherCreator::random()->currencyCode
+            'currency'        => MotherCreator::random()->currencyCode,
+            'reference'       => uniqid('#')
         ];
 
         return EcommerceOrderEntity::fromArray($data);

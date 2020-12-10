@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
@@ -29,7 +32,16 @@ Route::group([], function (Router $router) {
         $guestRouter->get('/', WelcomeController::class);
 
         //cart routes
-        $guestRouter->post('/cart', [CartController::class, 'show'])->name('cart.show');
+        $guestRouter->get('/cart', [CartController::class, 'show'])->name('cart.show');
+
+        //order routes
+        $guestRouter->post('/orders', [OrderController::class, 'store'])->name('orders.store');
+
+        //transaction routes
+        $guestRouter->post('/transactions', [TransactionController::class, 'store'])->name('transactions.store');
+
+        //payment routes
+        $guestRouter->get('/payments/response', [PaymentController::class, 'response'])->name('payments.response');
     });
 });
 

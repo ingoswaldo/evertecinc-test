@@ -39,6 +39,11 @@ final class EcommerceOrderResponse extends Response
     private $currency;
 
     /**
+     * @var string
+     */
+    private $reference;
+
+    /**
      * EcommerceCustomerResponse constructor.
      * @param  int     $id
      * @param  string  $customerName
@@ -47,6 +52,7 @@ final class EcommerceOrderResponse extends Response
      * @param  string  $status
      * @param  float   $total
      * @param  string  $currency
+     * @param  string  $reference
      * @param  string  $created_at
      * @param  string  $updated_at
      */
@@ -57,6 +63,7 @@ final class EcommerceOrderResponse extends Response
         string $status,
         float $total,
         string $currency,
+        string $reference,
         string $created_at,
         string $updated_at
     ) {
@@ -68,6 +75,7 @@ final class EcommerceOrderResponse extends Response
         $this->status = $status;
         $this->total = $total;
         $this->currency = $currency;
+        $this->reference = $reference;
     }
 
     /**
@@ -83,6 +91,7 @@ final class EcommerceOrderResponse extends Response
             'status'          => $this->getStatus(),
             'total'           => $this->getTotal(),
             'currency'        => $this->getCurrency(),
+            'reference'       => $this->getReference(),
             'created_at'      => $this->getCreatedAt(),
             'updated_at'      => $this->getUpdatedAt()
         ];
@@ -102,8 +111,9 @@ final class EcommerceOrderResponse extends Response
             $data[ 'status' ],
             $data[ 'total' ],
             $data[ 'currency' ],
+            $data[ 'reference' ],
             $data[ 'created_at' ],
-            $data[ 'updated' ]
+            $data[ 'updated_at' ]
         );
     }
 
@@ -153,5 +163,13 @@ final class EcommerceOrderResponse extends Response
     public function getCurrency(): string
     {
         return $this->currency;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReference(): string
+    {
+        return $this->reference;
     }
 }

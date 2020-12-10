@@ -112,7 +112,7 @@ final class EcommerceTransactionEntity extends Entity
     public function toArray(): array
     {
         return [
-            'order_id'         => $this->getOrderId(),
+            'order_id'         => $this->getOrderId()->getValue(),
             'subtotal'         => $this->getSubtotal(),
             'transaction_cost' => $this->getTransactionCost(),
             'total'            => $this->getTotal(),

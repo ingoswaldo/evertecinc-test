@@ -55,18 +55,18 @@ final class EcommerceTransactionResponse extends Response
 
     /**
      * EcommerceCustomerResponse constructor.
-     * @param  int     $id
-     * @param  int     $orderId
-     * @param  float   $subtotal
-     * @param  float   $transactionCost
-     * @param  float   $total
-     * @param  string  $expirationDate
-     * @param  string  $ipAddress
-     * @param  string  $status
-     * @param  string  $requestId
-     * @param  string  $requestUrl
-     * @param  string  $created_at
-     * @param  string  $updated_at
+     * @param  int          $id
+     * @param  int          $orderId
+     * @param  float        $subtotal
+     * @param  float        $transactionCost
+     * @param  float        $total
+     * @param  string       $expirationDate
+     * @param  string       $ipAddress
+     * @param  string       $status
+     * @param  string|null  $requestId
+     * @param  string|null  $requestUrl
+     * @param  string       $created_at
+     * @param  string       $updated_at
      */
     public function __construct(int $id,
         int $orderId,
@@ -76,8 +76,8 @@ final class EcommerceTransactionResponse extends Response
         string $expirationDate,
         string $ipAddress,
         string $status,
-        string $requestId,
-        string $requestUrl,
+        ?string $requestId,
+        ?string $requestUrl,
         string $created_at,
         string $updated_at
     ) {
@@ -133,7 +133,7 @@ final class EcommerceTransactionResponse extends Response
             $data[ 'request_id' ],
             $data[ 'request_url' ],
             $data[ 'created_at' ],
-            $data[ 'updated' ]
+            $data[ 'updated_at' ]
         );
     }
 
@@ -196,7 +196,7 @@ final class EcommerceTransactionResponse extends Response
     /**
      * @return string
      */
-    public function getRequestId(): string
+    public function getRequestId(): ?string
     {
         return $this->requestId;
     }
@@ -204,7 +204,7 @@ final class EcommerceTransactionResponse extends Response
     /**
      * @return string
      */
-    public function getRequestUrl(): string
+    public function getRequestUrl(): ?string
     {
         return $this->requestUrl;
     }

@@ -39,6 +39,11 @@ final class EcommerceOrderEntity extends Entity
     private $currency;
 
     /**
+     * @var string
+     */
+    private $reference;
+
+    /**
      * EcommerceCustomerEntity constructor.
      * @param  string  $customerName
      * @param  string  $customerEmail
@@ -46,13 +51,15 @@ final class EcommerceOrderEntity extends Entity
      * @param  string  $status
      * @param  float   $total
      * @param  string  $currency
+     * @param  string  $reference
      */
     public function __construct(string $customerName,
         string $customerEmail,
         string $customerMobile,
         string $status,
         float $total,
-        string $currency
+        string $currency,
+        string $reference
     ) {
         $this->customerName = $customerName;
         $this->customerEmail = $customerEmail;
@@ -60,6 +67,7 @@ final class EcommerceOrderEntity extends Entity
         $this->status = $status;
         $this->total = $total;
         $this->currency = $currency;
+        $this->reference = $reference;
     }
 
     /**
@@ -74,7 +82,8 @@ final class EcommerceOrderEntity extends Entity
             $data[ 'customer_mobile' ],
             $data[ 'status' ],
             $data[ 'total' ],
-            $data[ 'currency' ]
+            $data[ 'currency' ],
+            $data[ 'reference' ],
         );
     }
 
@@ -89,7 +98,8 @@ final class EcommerceOrderEntity extends Entity
             'customer_mobile' => $this->getCustomerMobile(),
             'status'          => $this->getStatus(),
             'total'           => $this->getTotal(),
-            'currency'        => $this->getCurrency()
+            'currency'        => $this->getCurrency(),
+            'reference'       => $this->getReference(),
         ];
     }
 
@@ -139,5 +149,13 @@ final class EcommerceOrderEntity extends Entity
     public function getCurrency(): string
     {
         return $this->currency;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReference(): string
+    {
+        return $this->reference;
     }
 }

@@ -21,6 +21,7 @@ class CreateOrdersTable extends Migration
             $table->string('status');
             $table->decimal('total');
             $table->string('currency', 3);
+            $table->string('reference', 15);
             $table->timestamps();
             $table->softDeletes();
         });

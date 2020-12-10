@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\WelcomeController;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +17,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group([], function (Router $router) {
+    //login routes
+    $router->middleware('auth')->group(function (Router $authRouter) {
+        $authRouter->get('/dashboard', DashboardController::class)->name('dashboard');
+    });
+
+    //guest routes
+    $router->group([], function (Router $guestRouter) {
+        //welcome
+        $guestRouter->get('/', WelcomeController::class);
+
+        //cart routes
+        $guestRouter->post('/cart', [CartController::class, 'show'])->name('cart.show');
+    });
 });
+
+require __DIR__.'/auth.php';

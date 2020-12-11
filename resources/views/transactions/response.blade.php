@@ -1,4 +1,10 @@
-<x-guest-layout>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            Resultado de la transacción
+        </h2>
+    </x-slot>
+
     <x-cart>
         <dl>
             <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -50,5 +56,5 @@
             @endif
         </dl>
     </x-cart>
-</x-guest-layout>
+</x-app-layout>
 

@@ -1,4 +1,10 @@
-<x-guest-layout>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            Pago
+        </h2>
+    </x-slot>
+
     <x-cart>
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
@@ -62,4 +68,4 @@
             </div>
         </form>
     </x-cart>
-</x-guest-layout>
+</x-app-layout>

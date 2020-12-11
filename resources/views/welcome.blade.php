@@ -1,4 +1,10 @@
-<x-guest-layout>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            Comprar Productos
+        </h2>
+    </x-slot>
+
     <x-product>
         <div class="flex" x-data="{ productQuantity: 1 }">
             <div class="flex-none w-48 relative">
@@ -59,4 +65,4 @@
             </form>
         </div>
     </x-product>
-</x-guest-layout>
+</x-app-layout>

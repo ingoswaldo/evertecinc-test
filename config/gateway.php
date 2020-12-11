@@ -7,7 +7,6 @@ return [
         'login'      => env('PLACE_TO_PAY_LOGIN'),
         'tran_key'   => env('PLACE_TO_PAY_TRAN_KEY'),
         'url'        => env('PLACE_TO_PAY_URL'),
-        'return_url' => env('PLACE_TO_PAY_RETURN_URL'),
 
         'rest' => [
 

@@ -41,7 +41,8 @@ Route::group([], function (Router $router) {
         $guestRouter->post('/transactions', [TransactionController::class, 'store'])->name('transactions.store');
 
         //payment routes
-        $guestRouter->get('/payments/response', [PaymentController::class, 'response'])->name('payments.response');
+        $guestRouter->get('/payments/response/{order}', [PaymentController::class, 'response'])->name('payments.response');
+        $guestRouter->get('/payments/response/{order}/declined', [PaymentController::class, 'declined'])->name('payments.declined');
     });
 });
 

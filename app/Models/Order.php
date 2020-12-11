@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends Model
@@ -22,10 +22,17 @@ class Order extends Model
     ];
 
     /**
-     * @return HasMany
+     * @return HasOne
      */
-    public function transactions(): HasMany
+    public function transaction(): HasOne
     {
-        return $this->hasMany(Transaction::class);
+        return $this->hasOne(Transaction::class);
+    }
+
+    public function canRetryPayment(): bool
+    {
+        return $this->status !== 'PAYED' &&
+            isset($this->transaction->request_url) &&
+            now()->lessThanOrEqualTo($this->transaction->expiration_date ?? '');
     }
 }

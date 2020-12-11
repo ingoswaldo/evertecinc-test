@@ -25,37 +25,33 @@ final class UpdateEcommerceOrderUseCase extends BaseUseCase
 
     /**
      * @param  int     $id
-     * @param  string  $name
-     * @param  string  $email
-     * @param  string  $password
-     * @param  string  $phone
-     * @param  int     $stateId
-     * @param  string  $city
-     * @param  string  $address
-     * @param  string  $postalCode
+     * @param  string  $customerName
+     * @param  string  $customerEmail
+     * @param  string  $customerMobile
+     * @param  string  $status
+     * @param  float   $total
+     * @param  string  $currency
+     * @param  string  $reference
      * @return Response
      */
     public function execute(int $id,
-        string $name,
-        string $email,
-        string $password,
-        string $phone,
-        int $stateId,
-        string $city,
-        string $address,
-        string $postalCode
+        string $customerName,
+        string $customerEmail,
+        string $customerMobile,
+        string $status,
+        float $total,
+        string $currency,
+        string $reference
     ): Response {
         $id = new EcommerceOrderId($id);
         $data = [
-            'id'          => $id->getValue(),
-            'name'        => $name,
-            'email'       => $email,
-            'password'    => $password,
-            'phone'       => $phone,
-            'state_id'    => $stateId,
-            'city'        => $city,
-            'address'     => $address,
-            'postal_code' => $postalCode
+            'customer_name'   => $customerName,
+            'customer_email'  => $customerEmail,
+            'customer_mobile' => $customerMobile,
+            'status'          => $status,
+            'total'           => $total,
+            'currency'        => $currency,
+            'reference'       => $reference
         ];
 
         $response = $this->repository->update($id, EcommerceOrderEntity::fromArray($data));

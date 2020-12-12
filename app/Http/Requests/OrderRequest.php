@@ -24,13 +24,28 @@ class OrderRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             'product_currency' => 'required|string|max:3',
             'product_price'    => 'required|numeric',
             'product_quantity' => 'required|integer|min:1',
             'name'             => 'required|string|max:255',
             'email'            => 'required|email',
             'mobile'           => 'required|string|max:10',
+            'state_id'         => 'required|integer',
+            'city'             => 'required|string',
+            'address'          => 'nullable|string',
+            'postal_code'      => 'nullable|numeric',
         ];
+
+        if ($this->userIsNotLoggedIn()) {
+            $rules[ 'password' ] = 'required|min:8|confirmed';
+        }
+
+        return $rules;
+    }
+
+    private function userIsNotLoggedIn(): bool
+    {
+        return auth()->check() === false;
     }
 }

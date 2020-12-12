@@ -11,13 +11,13 @@ final class EcommerceOrdersResponse
      */
     private $orders;
 
-    public function __construct(EcommerceOrderResponse ...$customers)
+    public function __construct(EcommerceOrderResponse ...$orders)
     {
-        $this->orders = $customers;
+        $this->orders = $orders;
     }
 
     /**
-     * @return EcommerceOrdersResponse[]
+     * @return EcommerceOrderResponse[]
      */
     public function getOrders(): array
     {

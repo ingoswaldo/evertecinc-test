@@ -21,11 +21,6 @@ final class EcommerceCustomerResponse extends Response
     /**
      * @var string
      */
-    private $password;
-
-    /**
-     * @var string
-     */
     private $phone;
 
     /**
@@ -53,7 +48,6 @@ final class EcommerceCustomerResponse extends Response
      * @param  int     $id
      * @param  string  $name
      * @param  string  $email
-     * @param  string  $password
      * @param  string  $phone
      * @param  int     $stateId
      * @param  string  $city
@@ -65,7 +59,6 @@ final class EcommerceCustomerResponse extends Response
     public function __construct(int $id,
         string $name,
         string $email,
-        string $password,
         string $phone,
         int $stateId,
         string $city,
@@ -78,7 +71,6 @@ final class EcommerceCustomerResponse extends Response
 
         $this->name = $name;
         $this->email = $email;
-        $this->password = $password;
         $this->phone = $phone;
         $this->stateId = $stateId;
         $this->city = $city;
@@ -95,7 +87,6 @@ final class EcommerceCustomerResponse extends Response
             'id'          => $this->getId(),
             'name'        => $this->getName(),
             'email'       => $this->getEmail(),
-            'password'    => $this->getPassword(),
             'phone'       => $this->getPhone(),
             'state_id'    => $this->getStateId(),
             'city'        => $this->getCity(),
@@ -116,14 +107,13 @@ final class EcommerceCustomerResponse extends Response
             $data[ 'id' ],
             $data[ 'name' ],
             $data[ 'email' ],
-            $data[ 'password' ],
             $data[ 'phone' ],
             $data[ 'state_id' ],
             $data[ 'city' ],
-            $data[ 'address' ],
-            $data[ 'postal_code' ],
+            $data[ 'address' ] ?? '',
+            $data[ 'postal_code' ] ?? '',
             $data[ 'created_at' ],
-            $data[ 'updated' ]
+            $data[ 'updated_at' ]
         );
     }
 
@@ -141,14 +131,6 @@ final class EcommerceCustomerResponse extends Response
     public function getEmail(): string
     {
         return $this->email;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPassword(): string
-    {
-        return $this->password;
     }
 
     /**

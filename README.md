@@ -57,3 +57,10 @@ php artisan serve
 # Ready to go!
 
 You can now access the server at http://localhost:8000.
+
+# Default Admin User
+
+```
+email: super@super.com
+password: password
+```

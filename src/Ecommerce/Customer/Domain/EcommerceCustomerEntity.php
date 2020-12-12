@@ -58,7 +58,7 @@ final class EcommerceCustomerEntity extends Entity
      * @param  string            $phone
      * @param  string            $city
      * @param  string            $address
-     * @param  string            $postalCode
+     * @param  string|null       $postalCode
      */
     public function __construct(EcommerceStateId $stateId,
         string $name,
@@ -67,7 +67,7 @@ final class EcommerceCustomerEntity extends Entity
         string $phone,
         string $city,
         string $address,
-        string $postalCode
+        ?string $postalCode
     ) {
         $this->stateId = $stateId;
         $this->name = $name;
@@ -93,7 +93,7 @@ final class EcommerceCustomerEntity extends Entity
             $data[ 'phone' ],
             $data[ 'city' ],
             $data[ 'address' ],
-            $data[ 'postal_code' ]
+            $data[ 'postal_code' ] ?? ''
         );
     }
 
@@ -107,7 +107,7 @@ final class EcommerceCustomerEntity extends Entity
             'email'       => $this->getEmail(),
             'password'    => $this->getPassword(),
             'phone'       => $this->getPhone(),
-            'state_id'    => $this->getStateId(),
+            'state_id'    => $this->getStateId()->getValue(),
             'city'        => $this->getCity(),
             'address'     => $this->getAddress(),
             'postal_code' => $this->getPostalCode()

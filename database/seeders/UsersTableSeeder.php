@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use jeremykenedy\LaravelRoles\Models\Role;
 
 class UsersTableSeeder extends Seeder
 {
@@ -22,17 +21,11 @@ class UsersTableSeeder extends Seeder
 
     private function deleteUsers()
     {
-        Role::query()->delete();
         User::query()->delete();
     }
 
     private function insertUsers()
     {
-        $role = Role::query()->create([
-            'name' => 'superadmin',
-            'slug' => 'super',
-        ]);
-
         $user = User::query()->create([
             'name'              => 'Super',
             'email'             => 'super@super.com',
@@ -44,6 +37,6 @@ class UsersTableSeeder extends Seeder
             'email_verified_at' => now()
         ]);
 
-        $user->attachRole($role);
+        $user->attachRole(1);
     }
 }

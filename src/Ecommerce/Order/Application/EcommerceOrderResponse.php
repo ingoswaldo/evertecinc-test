@@ -109,7 +109,7 @@ final class EcommerceOrderResponse extends Response
             $data[ 'customer_email' ],
             $data[ 'customer_mobile' ],
             $data[ 'status' ],
-            $data[ 'total' ],
+            (float) $data[ 'total' ],
             $data[ 'currency' ],
             $data[ 'reference' ],
             $data[ 'created_at' ],

@@ -16,6 +16,8 @@ cd evertecinc-test
 
 ## Step 3: Install all the dependencies using composer
 
+You must run the next command:
+
 ```
 composer install
 ```
@@ -30,17 +32,33 @@ copy .env.example .env
 
 ## Step 5: Generate project key
 
-Laravel requires an encryption key for each project.
+Laravel requires an encryption key for each project. So, you must run the next command:
 
 ```
 php artisan key:generate
 ```
 
-## Step 6: Create database
+## Step 6: Set up the place to pay keys
+
+The ecommerce use the place to pace gateway, so you need set up the keys in the .env file.
+The key are the next
+
+```
+PLACE_TO_PAY_LOGIN=
+PLACE_TO_PAY_TRAN_KEY=
+PLACE_TO_PAY_URL=
+```
+These are the necessary variables to set up, you can set up other variable related to the timeout with the place to pay gateway, it's the next:
+
+```
+PLACE_TO_PAY_TIMEOUT=15 //by default is 15 and please fill it with integer values
+```
+
+## Step 7: Create database
 
 Laravel is configured to use mySQL by default, not only the driver, server, database, user and password must be changed, but also the port, mySQL uses 3306 and postgres 5432.
 
-## Step 7: Migrate and seed the database
+## Step 8: Migrate and seed the database
 
 I already created the migrations with the test data.
 
@@ -48,7 +66,7 @@ I already created the migrations with the test data.
 php artisan migrate --seed
 ```
 
-## Step 8: Start the local development server
+## Step 9: Start the local development server
 
 ```
 php artisan serve
@@ -63,4 +81,12 @@ You can now access the server at http://localhost:8000.
 ```
 email: super@super.com
 password: password
+```
+
+# Testing
+
+If you want to run the tests, you must run the next command:
+
+```
+php artisan test
 ```

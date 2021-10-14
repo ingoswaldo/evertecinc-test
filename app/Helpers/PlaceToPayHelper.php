@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 
 namespace App\Helpers;
@@ -9,24 +9,11 @@ final class PlaceToPayHelper
 {
 
     /**
-     * @param  string  $login
-     * @param  string  $tranKey
-     * @param  string  $url
-     * @param  int     $timeOut
-     * @param  int     $connectTimeOut
      * @return array
      */
-    public static function getConfig(string $login, string $tranKey, string $url, int $timeOut, int $connectTimeOut): array
+    public static function getConfig(): array
     {
-        return [
-            'login'   => $login,
-            'tranKey' => $tranKey,
-            'url'     => $url,
-            'rest'    => [
-                'timeout'         => $timeOut,
-                'connect_timeout' => $connectTimeOut
-            ]
-        ];
+        return config('gateway.place_to_pay');
     }
 
     /**
@@ -45,8 +32,11 @@ final class PlaceToPayHelper
         string $expirationDate,
         string $returnUrl
     ): array {
+        $ip = request()->ip();
+        $userAgent = request()->userAgent();
+
         return [
-            'payment' => [
+            'payment'    => [
                 'reference'   => $reference,
                 'description' => $description,
                 'amount'      => [
@@ -56,6 +46,8 @@ final class PlaceToPayHelper
             ],
             'expiration' => $expirationDate,
             'returnUrl'  => $returnUrl,
+            'ipAddress'  => $ip,
+            'userAgent'  => $userAgent,
         ];
     }
 }

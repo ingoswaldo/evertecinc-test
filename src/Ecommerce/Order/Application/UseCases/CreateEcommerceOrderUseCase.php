@@ -36,7 +36,7 @@ final class CreateEcommerceOrderUseCase extends BaseUseCase
             'status'          => $status,
             'total'           => $total,
             'currency'        => $currency,
-            'reference'       => uniqid('#')
+            'reference'       => uniqid()
         ];
 
         $response = $this->repository->save(EcommerceOrderEntity::fromArray($data));

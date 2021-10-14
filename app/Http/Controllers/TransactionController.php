@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TransactionRequest;
 use Dnetix\Redirection\Exceptions\PlacetoPayException;
 use Dnetix\Redirection\Message\RedirectResponse;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Routing\Redirector;
 use Src\Ecommerce\Transaction\Application\UseCases\CreateEcommerceTransactionUseCase;
 use Src\Ecommerce\Transaction\Application\UseCases\PayEcommerceTransactionUseCase;
 use Src\Ecommerce\Transaction\Application\UseCases\UpdateEcommerceTransactionUseCase;
@@ -17,6 +19,7 @@ class TransactionController extends Controller
     /**
      * @param  TransactionRequest                      $request
      * @param  EcommerceEloquentTransactionRepository  $repository
+     * @return Application|\Illuminate\Http\RedirectResponse|Redirector|void
      * @throws PlacetoPayException
      */
     public function store(TransactionRequest $request, EcommerceEloquentTransactionRepository $repository)
@@ -31,7 +34,7 @@ class TransactionController extends Controller
             return redirect($responsePay->processUrl());
         }
 
-        abort(500, $responsePay->status()->message());
+        abort(404, $responsePay->status()->message());
     }
 
     /**
@@ -67,11 +70,6 @@ class TransactionController extends Controller
         $payUseCase = new PayEcommerceTransactionUseCase();
 
         return $payUseCase->execute(
-            config('gateway.place_to_pay.login'),
-            config('gateway.place_to_pay.tran_key'),
-            config('gateway.place_to_pay.url'),
-            config('gateway.place_to_pay.rest.timeout'),
-            config('gateway.place_to_pay.rest.connect_timeout'),
             $request->get('reference'),
             'payment of my product',
             $transaction[ 'total' ],

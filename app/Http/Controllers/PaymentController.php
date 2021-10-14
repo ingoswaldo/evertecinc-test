@@ -19,7 +19,7 @@ class PaymentController extends Controller
         if ($this->hasRequestId($order->transaction->request_id)){
 
             $findPaymentUseCase = new FindPaymentEcommerceTransactionUseCase();
-            $response = $findPaymentUseCase->execute($order->transaction->request_id);
+            $response = $findPaymentUseCase->execute((int) $order->transaction->request_id);
 
             if ($response->isSuccessful()){
 

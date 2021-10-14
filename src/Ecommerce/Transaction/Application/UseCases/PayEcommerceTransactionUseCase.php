@@ -13,11 +13,6 @@ final class PayEcommerceTransactionUseCase
 {
 
     /**
-     * @param  string  $login
-     * @param  string  $tranKey
-     * @param  string  $url
-     * @param  int     $timeOut
-     * @param  int     $connectTimeOut
      * @param  string  $reference
      * @param  string  $description
      * @param  float   $total
@@ -27,11 +22,7 @@ final class PayEcommerceTransactionUseCase
      * @return RedirectResponse
      * @throws PlacetoPayException
      */
-    public function execute(string $login,
-        string $tranKey,
-        string $url,
-        int $timeOut,
-        int $connectTimeOut,
+    public function execute(
         string $reference,
         string $description,
         float $total,
@@ -39,7 +30,7 @@ final class PayEcommerceTransactionUseCase
         string $expirationDate,
         string $returnUrl
     ): RedirectResponse {
-        $placeToPay = new PlacetoPay(PlaceToPayHelper::getConfig($login, $tranKey, $url, $timeOut, $connectTimeOut));
+        $placeToPay = new PlacetoPay(PlaceToPayHelper::getConfig());
         return $placeToPay->request(PlaceToPayHelper::getRequest(
             $reference,
             $description,

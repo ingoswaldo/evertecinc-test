@@ -5,7 +5,6 @@ namespace Src\Ecommerce\Transaction\Application\UseCases;
 
 
 use App\Helpers\PlaceToPayHelper;
-use Dnetix\Redirection\Exceptions\PlacetoPayException;
 use Dnetix\Redirection\Message\RedirectInformation;
 use Dnetix\Redirection\PlacetoPay;
 
@@ -13,19 +12,12 @@ final class FindPaymentEcommerceTransactionUseCase
 {
 
     /**
-     * @param  string  $requestId
+     * @param  int  $requestId
      * @return RedirectInformation
-     * @throws PlacetoPayException
      */
-    public function execute(string $requestId): RedirectInformation
+    public function execute(int $requestId): RedirectInformation
     {
-        $placeToPay = new PlacetoPay(PlaceToPayHelper::getConfig(
-            config('gateway.place_to_pay.login'),
-            config('gateway.place_to_pay.tran_key'),
-            config('gateway.place_to_pay.url'),
-            (int) config('gateway.place_to_pay.rest.timeout'),
-            (int) config('gateway.place_to_pay.rest.connect_timeout')
-        ));
+        $placeToPay = new PlacetoPay(PlaceToPayHelper::getConfig());
 
         return $placeToPay->query($requestId);
     }

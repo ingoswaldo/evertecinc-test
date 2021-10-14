@@ -3,15 +3,9 @@
 return [
 
     'place_to_pay' => [
-
-        'login'      => env('PLACE_TO_PAY_LOGIN'),
-        'tran_key'   => env('PLACE_TO_PAY_TRAN_KEY'),
-        'url'        => env('PLACE_TO_PAY_URL'),
-
-        'rest' => [
-
-            'timeout'         => env('PLACE_TO_PAY_TIMEOUT', 15),
-            'connect_timeout' => env('PLACE_TO_PAY_CONNECT_TIMEOUT', 5)
-        ]
+        'login'   => env('PLACE_TO_PAY_LOGIN'),
+        'tranKey' => env('PLACE_TO_PAY_TRAN_KEY'),
+        'baseUrl' => env('PLACE_TO_PAY_URL'),
+        'timeout' => env('PLACE_TO_PAY_TIMEOUT', 15),
     ]
 ];

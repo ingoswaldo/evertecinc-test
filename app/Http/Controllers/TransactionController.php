@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TransactionRequest;
+use Carbon\Carbon;
 use Dnetix\Redirection\Exceptions\PlacetoPayException;
 use Dnetix\Redirection\Message\RedirectResponse;
 use Illuminate\Contracts\Foundation\Application;
@@ -34,7 +35,7 @@ class TransactionController extends Controller
             return redirect($responsePay->processUrl());
         }
 
-        abort(404, $responsePay->status()->message());
+        abort($responsePay->status()->reason(), $responsePay->status()->message());
     }
 
     /**
@@ -68,13 +69,14 @@ class TransactionController extends Controller
     {
         $returnUrl = route('payments.response', $transaction[ 'order_id' ]);
         $payUseCase = new PayEcommerceTransactionUseCase();
+        $expirationDate = Carbon::create($transaction['expiration_date'])->format('c');
 
         return $payUseCase->execute(
             $request->get('reference'),
             'payment of my product',
             $transaction[ 'total' ],
             $request->get('currency'),
-            $transaction[ 'expiration_date' ],
+            $expirationDate,
             $returnUrl
         );
     }
